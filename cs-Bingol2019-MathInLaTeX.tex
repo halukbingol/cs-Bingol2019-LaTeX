@@ -1,20 +1,76 @@
 % !TEX spellcheck = en_US
 
+% source: https://github.com/halukbingol/cs-Bingol2019-LaTeX.git
+
+
 \documentclass[a4paper,10pt,landscape]{article}
 
 \usepackage[utf8]{inputenc} % To use Unicode characters
-\usepackage[iso]{datetime}
-	\newcommand{\hbTimeStamp}{{\color{red}v\today/\currenttime}} % version
-
-
 
 \usepackage{etex}  % prevent counter errors
 
+%
+\usepackage{cancel}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{color}
+	\definecolor{darkred}{rgb}{0.8,0.1,0.1}
+	\definecolor{darkgreen}{rgb}{0,0.5,0}
+	\definecolor{darkblue}{rgb}{0,0,0.5}
+\usepackage[all]{xy}
+	\CompileMatrices % \xymatrix
 
 
 
-% ======================================= V
-%:  AMS packages 
+% All this page size stuff is a hack, but it seems to work
+% Turn off header and footer
+\pagestyle{empty}
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{10in}
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{7.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{1}
+%\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+
+
+
+
+
+%: ==== bingol stuff =======================================  V
+
+%: ==== AMS packages ======================================= V
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -33,14 +89,29 @@
 \newtheorem{rem}{Remark}[section]
 \newtheorem*{notation}{Notation}
 \newtheorem{exmp}{Example}[section] % @HB
-% ======================================= A
+%  AMS packages ======================================= A
+
+%: ====  time stamp ======================================= V
+\usepackage[iso]{datetime}
+	\newcommand{\hbTimeStamp}{{\color{red}v\today/\currenttime}} % version
+% time stamp ======================================= A
 
 
 
 
 
-% ======================================= V
-%: references
+%: ==== HB special defined ======================================= V
+\newcommand{\hDif}{\mathrm{d}}			% differential dx
+\newcommand{\hDef}[1]{\textcolor{darkred}{\textit{#1}}} % definition
+\newcommand{\hDefIff}{\ensuremath{ \ \overset{\Delta}{\longleftrightarrow}} \ } % <-->
+\newcommand{\hDefEq}{\ensuremath{ \ \triangleq} \ } % =
+\newcommand{\hDefEv}{\ensuremath{ \ \overset{\Delta}{\equiv}} \ } % =
+\newcommand{\hAbs}[1]{\ensuremath{\left \lvert \, #1 \, \right \rvert} } % |x|
+\newcommand{\hCeil}[1]	{\ensuremath{\lceil  \, #1 \,  \rceil }} % ceil(x)
+\newcommand{\hFloor}[1]	{\ensuremath{\lfloor  \, #1 \,  \rfloor }} % floor(x)
+% ==== HB special defined ======================================= A
+
+%: ==== HB references ======================================= V
 \newcommand{\reffig}[1]{Fig.~\ref{#1}}
 \newcommand{\reftbl}[1]{Table~\ref{#1}}
 \newcommand{\refsec}[1]{Sec.~\ref{#1}}
@@ -48,33 +119,9 @@
 \newcommand{\reflem}[1]{Lemma~\ref{#1}}
 \newcommand{\refdef}[1]{Definition~\ref{#1}}
 \newcommand{\refeq}[1]{Eq.~\ref{#1}}
-% ======================================= A
+%: ==== HB references ======================================= A
 
-%
-\usepackage{cancel}
-\usepackage{multicol}
-\usepackage{enumerate}
-
-\usepackage{color}
-	\definecolor{darkred}{rgb}{0.8,0.1,0.1}
-	\definecolor{darkgreen}{rgb}{0,0.5,0}
-	\definecolor{darkblue}{rgb}{0,0,0.5}
-
-\usepackage[all]{xy}
-	\CompileMatrices % \xymatrix
-
-
-% ===========
-\newcommand{\hDif}{\mathrm{d}}			% differential dx
-\newcommand{\hDefined}[1]{\textcolor{darkred}{\textit{#1}}} % definition
-\newcommand{\hDefinitionIFF}{\ensuremath{ \ \overset{\Delta}{\longleftrightarrow}} \ } % <-->
-\newcommand{\hDefinitionEqual}{\ensuremath{ \ \triangleq} \ } % =
-\newcommand{\hDefinitionEquiv}{\ensuremath{ \ \overset{\Delta}{\equiv}} \ } % =
-\newcommand{\hAbs}[1]{\ensuremath{\left \lvert \, #1 \, \right \rvert} } % |x|
-\newcommand{\hCeil}[1]	{\ensuremath{\lceil  \, #1 \,  \rceil }} % ceil(x)
-\newcommand{\hFloor}[1]	{\ensuremath{\lfloor  \, #1 \,  \rfloor }} % floor(x)
-
-% ==== HB Header Common Sets v20181201 ====V
+%: ==== HB Header Common Sets v20181201 ======================================= V
 \newcommand{\hSoN}  {\ensuremath{\mathbb{N}}}      % set of Natural Numbers
 \newcommand{\hSoNp} {\ensuremath{\mathbb{N}^{+}}} % set of Natural +
 \newcommand{\hSoZ}  {\ensuremath{\mathbb{Z}}}      % set of Integers
@@ -107,81 +154,7 @@
 \newcommand{\hSoFunctions}[2]{\ensuremath{#2^{#1}}} % set of functions from 1to2
 \newcommand{\hSoSubsets}[1]{\ensuremath{2^{#1}}} % set of subsets of 1
 \newcommand{\hSoPowerSet}[1]{\ensuremath{\mathcal{P}(#1)}} % power set of 1
-% ==== HB Header Common Sets v20181201 ====A
-
-
-%\usepackage[a4paper,landscape]{geometry}
-
-%\usepackage{mathtools}
-
-
-%
-%\usepackage{multicol}
-%\usepackage{calc}
-%\usepackage[landscape]{geometry} % landscape
-
-
-% To Do:
-% \listoffigures \listoftables
-% \setcounter{secnumdepth}{0}
-
-% This stuff fails to set the page size properly for some reason
-
-%\usepackage{anysize}
-%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
-
-%\special{papersize=11in,8.5in}
-%\setlength{\textwidth}{10in}
-%\setlength{\textheight}{6.5in}
-%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
-
-
-% All this page size stuff is a hack, but it seems to work
-% Turn off header and footer
-\pagestyle{empty}
-
-\setlength{\oddsidemargin}{0.25in}
-\setlength{\evensidemargin}{0.5in}
-\setlength{\textwidth}{10in}
-
-
-\setlength{\topmargin}{-0.75in}
-\setlength{\textheight}{7.25in}
-\setlength{\headheight}{0in}
-\setlength{\headsep}{0in}
-
-
-
- 
-
-% Redefine section commands to use less space
-\makeatletter
-\renewcommand{\section}{\@startsection{section}{1}{0mm}%
-                                {-1ex plus -.5ex minus -.2ex}%
-                                {0.5ex plus .2ex}%x
-                                {\normalfont\large\bfseries}}
-\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
-                                {-1explus -.5ex minus -.2ex}%
-                                {0.5ex plus .2ex}%
-                                {\normalfont\normalsize\bfseries}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0mm}%
-                                {-1ex plus -.5ex minus -.2ex}%
-                                {1ex plus .2ex}%
-                                {\normalfont\small\bfseries}}
-\makeatother
-
-% Define BibTeX command
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-
-% Don't print section numbers
-\setcounter{secnumdepth}{1}
-%\setcounter{secnumdepth}{0}
-
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt plus 0.5ex}
-
+% ==== HB Header Common Sets v20181201 ======================================= A
 
 % -----------------------------------------------------------------------
 
@@ -201,11 +174,11 @@
 \setlength{\columnsep}{2pt}
 
 \begin{center}
-     \Large{\textbf{
-     	Cheat Sheet\\
-	Math in \LaTeX
-     }}\\
-     \small{\hbTimeStamp}
+	\Large{\textbf{
+		Cheat Sheet\\
+		Math in \LaTeX
+	}}\\
+	\small{\hbTimeStamp}
 \end{center}
 
 
@@ -818,7 +791,7 @@ $
 % ----------------------------
 \begin{multicols}{2}
 	\begin{defn}
-		aa \hDefined{dd} aa.
+		aa \hDef{dd} aa.
 		\label{def:aa}
 	\end{defn}
 \columnbreak
@@ -1065,12 +1038,12 @@ $
 
 \begin{tabular}{@{}ll@{}}
 %	$ new line$	&\verb!\hNewLine!\\
-	$\hDefined{x}$	&\verb!\hDefined{x}!\\
-%	$\hDefinedC{x}$	&\verb!\hDefinedC{x}!\\
-%	$\hDefinedN{x}$	&\verb!\hDefinedN{x}!\\
-	$x \hDefinitionIFF  y$	&\verb!\hDefinitionIFF!\\
-	$x \hDefinitionEqual y$	&\verb!\hDefinitionEqual!\\
-	$x \hDefinitionEquiv y$	&\verb!\hDefinitionEquiv!\\
+	$\hDef{x}$	&\verb!\hDef{x}!\\
+%	$\hDefC{x}$	&\verb!\hDefC{x}!\\
+%	$\hDefN{x}$	&\verb!\hDefN{x}!\\
+	$x \hDefIff  y$	&\verb!\hDefIff!\\
+	$x \hDefEq y$	&\verb!\hDefEq!\\
+	$x \hDefEv y$	&\verb!\hDefEv!\\
 %	$aaa$	&\verb!aaa!\\
 \end{tabular}
 
