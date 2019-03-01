@@ -1,0 +1,1137 @@
+% !TEX spellcheck = en_US
+
+\documentclass[a4paper,10pt,landscape]{article}
+
+\usepackage[utf8]{inputenc} % To use Unicode characters
+\usepackage[iso]{datetime}
+	\newcommand{\hbTimeStamp}{{\color{red}v\today/\currenttime}} % version
+
+
+
+\usepackage{etex}  % prevent counter errors
+
+
+
+
+% ======================================= V
+%:  AMS packages 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}[section]
+%
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{ax}{Axiom}
+%
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+%
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}[section]
+\newtheorem*{notation}{Notation}
+\newtheorem{exmp}{Example}[section] % @HB
+% ======================================= A
+
+
+
+
+
+% ======================================= V
+%: references
+\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+\newcommand{\reftbl}[1]{Table~\ref{#1}}
+\newcommand{\refsec}[1]{Sec.~\ref{#1}}
+\newcommand{\refthm}[1]{Theorem~\ref{#1}}
+\newcommand{\reflem}[1]{Lemma~\ref{#1}}
+\newcommand{\refdef}[1]{Definition~\ref{#1}}
+\newcommand{\refeq}[1]{Eq.~\ref{#1}}
+% ======================================= A
+
+%
+\usepackage{cancel}
+\usepackage{multicol}
+\usepackage{enumerate}
+
+\usepackage{color}
+	\definecolor{darkred}{rgb}{0.8,0.1,0.1}
+	\definecolor{darkgreen}{rgb}{0,0.5,0}
+	\definecolor{darkblue}{rgb}{0,0,0.5}
+
+\usepackage[all]{xy}
+	\CompileMatrices % \xymatrix
+
+
+% ===========
+\newcommand{\hDif}{\mathrm{d}}			% differential dx
+\newcommand{\hDefined}[1]{\textcolor{darkred}{\textit{#1}}} % definition
+\newcommand{\hDefinitionIFF}{\ensuremath{ \ \overset{\Delta}{\longleftrightarrow}} \ } % <-->
+\newcommand{\hDefinitionEqual}{\ensuremath{ \ \triangleq} \ } % =
+\newcommand{\hDefinitionEquiv}{\ensuremath{ \ \overset{\Delta}{\equiv}} \ } % =
+\newcommand{\hAbs}[1]{\ensuremath{\left \lvert \, #1 \, \right \rvert} } % |x|
+\newcommand{\hCeil}[1]	{\ensuremath{\lceil  \, #1 \,  \rceil }} % ceil(x)
+\newcommand{\hFloor}[1]	{\ensuremath{\lfloor  \, #1 \,  \rfloor }} % floor(x)
+
+% ==== HB Header Common Sets v20181201 ====V
+\newcommand{\hSoN}  {\ensuremath{\mathbb{N}}}      % set of Natural Numbers
+\newcommand{\hSoNp} {\ensuremath{\mathbb{N}^{+}}} % set of Natural +
+\newcommand{\hSoZ}  {\ensuremath{\mathbb{Z}}}      % set of Integers
+\newcommand{\hSoZp} {\ensuremath{\mathbb{Z}^{+}}} % set of Integers +
+\newcommand{\hSoZn} {\ensuremath{\mathbb{Z}^{-}}} % set of Integers -
+\newcommand{\hSoZnn}{\ensuremath{\mathbb{Z}_{\ge 0}}} % set of Integers non negative
+\newcommand{\hSoZnz}{\ensuremath{\mathbb{Z}_{\neq 0}}} % set of Real +
+\newcommand{\hSoZnp}{\ensuremath{\mathbb{Z}_{\le 0}}} % set of Integers non positive
+\newcommand{\hSoQ}  {\ensuremath{\mathbb{Q}}}      % set of Rationals 
+\newcommand{\hSoQp} {\ensuremath{\mathbb{Q}^{+}}} % set of Rationals +
+\newcommand{\hSoQn} {\ensuremath{\mathbb{Q}^{-}}} % set of Rationals -
+\newcommand{\hSoQnn}{\ensuremath{\mathbb{Q}_{\ge 0}}} % set of Rationals non negative
+\newcommand{\hSoQnz}{\ensuremath{\mathbb{Q}_{\neq 0}}} % set of Real +
+\newcommand{\hSoQnp}{\ensuremath{\mathbb{Q}_{\le 0}}} % set of Rationals non positive
+\newcommand{\hSoR}  {\ensuremath{\mathbb{R}}}      % set of Real Numbers
+\newcommand{\hSoRp} {\ensuremath{\mathbb{R}^{+}}} % set of Real +
+\newcommand{\hSoRn} {\ensuremath{\mathbb{R}^{-}}} % set of Real -
+\newcommand{\hSoRnn}{\ensuremath{\mathbb{R}_{\ge 0}}} % set of Reals non negative
+%\newcommand{\hSoRnp}{\ensuremath{\mathbb{R}_{\ge 0}}} % set of Reals non positive
+\newcommand{\hSoRnz}{\ensuremath{\mathbb{R}_{\neq 0}}} % set of Real +
+\newcommand{\hSoRnp}{\ensuremath{\mathbb{R}_{\le 0}}} % set of Reals non positive
+\newcommand{\hSoC}  {\ensuremath{\mathbb{C}}}      % set of Complex Numbers
+\newcommand{\hSoCnz}{\ensuremath{\mathbb{C}_{\neq 0}}} % set of nonzero Complex Numbers
+%
+\newcommand{\hSoPrimes}{\ensuremath{\mathbb{P}}} % set of Prime Numbers
+\newcommand{\hSoTruth}{\ensuremath{\left \{ T, F \right \}}} % {T, F}
+%\newcommand{\hSoBinary}{\ensuremath{\left \{ 0, 1 \right \}}} % {0, 1}
+\newcommand{\hSoBits}{\ensuremath{\mathbb{B}}} % set of Bits
+%
+\newcommand{\hSoFunctions}[2]{\ensuremath{#2^{#1}}} % set of functions from 1to2
+\newcommand{\hSoSubsets}[1]{\ensuremath{2^{#1}}} % set of subsets of 1
+\newcommand{\hSoPowerSet}[1]{\ensuremath{\mathcal{P}(#1)}} % power set of 1
+% ==== HB Header Common Sets v20181201 ====A
+
+
+%\usepackage[a4paper,landscape]{geometry}
+
+%\usepackage{mathtools}
+
+
+%
+%\usepackage{multicol}
+%\usepackage{calc}
+%\usepackage[landscape]{geometry} % landscape
+
+
+% To Do:
+% \listoffigures \listoftables
+% \setcounter{secnumdepth}{0}
+
+% This stuff fails to set the page size properly for some reason
+
+%\usepackage{anysize}
+%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
+
+%\special{papersize=11in,8.5in}
+%\setlength{\textwidth}{10in}
+%\setlength{\textheight}{6.5in}
+%\marginsize{0.5in}{0.5in}{0.5in}{0.5in}
+
+
+% All this page size stuff is a hack, but it seems to work
+% Turn off header and footer
+\pagestyle{empty}
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{10in}
+
+
+\setlength{\topmargin}{-0.75in}
+\setlength{\textheight}{7.25in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+
+
+
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{1}
+%\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{
+     	Cheat Sheet\\
+	Math in \LaTeX
+     }}\\
+     \small{\hbTimeStamp}
+\end{center}
+
+
+
+
+% ======================================================================
+\section{Basics}
+\label{sec:basics}
+\begin{tabular}{@{}ll@{}}
+%	$\mathbf{a}$	&\verb!\mathbf{a}!\\
+	$a, \pmb{a}$	&\verb!a, \pmb{a}!\\
+%	$\Phi, \boldsymbol{\Phi}$	&\verb!\Phi, \boldsymbol{\Phi}!\\
+	$\Phi, \pmb{\Phi}$	&\verb!\Phi, \pmb{\Phi}!\\
+	$a^{ij}$	&\verb!a^{ij}!\\
+	$a_{ij}$	&\verb!a_{ij}!\\
+	$a_{i}^{j}$	&\verb!a_{i}^{j}!\\
+	${}_{k}^{l}a_{i}^{j}$	&\verb!{}_{k}^{l}a_{i}^{j}!\\
+%	$\head x$	&\verb!\dot x!\\
+	$\bar x$	&\verb!\bar x!\\
+	$\vec x$	&\verb!\vec x!\\
+	$\dot x$	&\verb!\dot x!\\
+	$\tilde{a}$	&\verb!\tilde{a}!\\
+	%
+	$\lvert a \rvert$ (\refsec{sec:pairs})	&\verb!\lvert a \rvert!\\
+	$\lceil a \rceil$ (\refsec{sec:pairs})	&\verb!\lceil a \rceil!\\
+	$\lfloor a \rfloor$ (\refsec{sec:pairs})	&\verb!\lfloor a \rfloor!\\
+	%
+	$\overline{ab}$	&\verb!\overline{ab}!\\
+	$\underline{ab}$	&\verb!\underline{ab}!\\
+	$\overrightarrow{AB}$	&\verb!\overrightarrow{AB}!\\
+	$\overleftarrow{AB}$	&\verb!\overleftarrow{AB}!\\
+	$\widetilde{ab}$	&\verb!\widetilde{ab}!\\
+	$\overbrace{a_{1} \cdots a_{k}}^{k}$	&\verb!\overbrace{a_{1} \cdots a_{k}}^{k}!\\
+	$\underbrace{a_{1} \cdots a_{k}}_{k}$	&\verb!\underbrace{a_{1} \cdots a_{k}}_{k}!\\
+	$\operatorname*{function}(x)$	&\verb!\operatorname*{function}(x)!\\
+	$M^{\top}$	&\verb!M^{\top}!\\
+	$\ell_{\bot}$	&\verb!\ell_{\bot}!\\
+	$\ell_{\parallel}$	&\verb!\ell_{\parallel}!\\
+%	$\underbracket{x}_{\text{real}}$	&\verb!aaa!\\
+%	$\underbrace{x}_\text{real}$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+
+% ======================================================================
+\section{Cancellation}
+\label{sec:cancellation}
+\begin{tabular}{@{}ll@{}}
+	$a \neq b$	&\verb!a \neq b!\\
+	$a \not\subseteq b$	&\verb!a \not\subseteq b!\\
+	$\not aa$	&\verb!\not aa!\\
+	$\not{aa}$	&\verb!\not{aa}!\\
+	$\cancel{a b c \beta}$	&\verb!\cancel{a b c \beta}!\\	% req. cancel
+	$\bcancel{a b c \beta}$	&\verb!\bcancel{a b c \beta}!\\	% req. cancel
+	$\xcancel{a b c \beta}$	&\verb!\xcancel{a b c \beta}!\\	% req. cancel
+	$\cancelto{\infty}{a b c \beta}$	&\verb!\cancelto{\infty}{a b c \beta}!\\	% req. cancel
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+% ======================================================================
+\section{Meta}
+\label{sec:meta}
+\begin{tabular}{@{}ll@{}}
+	$x \Longrightarrow y$	&\verb!x \Longrightarrow y!\\
+	$x \Longleftarrow y$	&\verb!x \Longleftarrow y!\\
+	$x \iff y$	&\verb!x \iff y!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+% ======================================================================
+\section{More}
+\begin{tabular}{@{}ll@{}}
+	%
+	$\sideset{_{a}^{b}}{_{c}^{d}} \sum$	
+	&\verb!\sideset{_{a}^{b}}{_{c}^{d}} \sum!\\
+	%
+	$\overset{abc}{xyz}$	
+	&\verb!\overset{abc}{xyz}!\\
+	%
+	$\underset{i}{\arg \, \min} \, \{ a_{i} \}$	
+	&\verb!\underset{i}{\arg \, \min} \, \{ a_{i} \}!\\
+	%
+	$\underset{a}{\arg \, \max} \, f(a)$	
+	&\verb!\underset{a}{\arg \, \max} \, f(a)!\\
+	%
+	$\frac{a}{b}$	
+	&\verb!\frac{a}{b}!\\
+	%
+	$\tfrac{a}{b}$	
+	&\verb!\tfrac{a}{b}!\\
+	%
+	$\sum_{i = 0}^{5} i$	
+	&\verb!\sum_{i = 0}^{5} i!\\
+	%
+	$\prod_{i = 0}^{5} i$	
+	&\verb!\prod_{i = 0}^{5} i!\\
+	%
+	$\lim_{a \to \infty} x$	
+	&\verb!\lim_{a \to \infty} x!\\
+	%
+		  $\frac{\hDif f(x)}{\hDif x}$	
+	&\verb!\frac{\hDif f(x)}{\hDif x}!\\
+	%
+	$a + \mathrm{i}\, b$
+	&\verb~a + \mathrm{i}\, b~\\
+	%
+		  $\int_{a}^{b} \! f(x) \, \hDif x$	
+	&\verb~\int_{a}^{b} \! f(x) \, \hDif x~\\
+	%
+	$\left[\frac{\infty}{\infty}\right]$ 
+	&\verb~\left[\frac{\infty}{\infty}\right]~\\
+%\makeatletter
+%\renewcommand\d[1]{\mspace{6mu}\mathrm{d}#1\@ifnextchar\d{\mspace{-3mu}}{}}
+%\makeatother
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+% =================
+\section{Format Patterns}
+% ----------------------------
+%\begin{tabular}{@{}ll@{}}
+%	a
+%	\begin{tabular}{|l|}
+%		b \\
+%		c
+%	\end{tabular}
+%	d.\\
+%&\verb!a
+%	\begin{tabular}{|l|}
+%		b \\
+%		c
+%	\end{tabular}
+%	d.\\
+%!\\
+%\end{tabular}\\
+
+\begin{multicols}{2}
+	a
+	\begin{tabular}{|l|}
+		b \\
+		c
+	\end{tabular}
+	d.\\
+\columnbreak
+	\begin{verbatim}
+		a
+		\begin{tabular}{|l|}
+			  b \\
+			  c
+		\end{tabular}
+		d.
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	 ${\genfrac(]{0pt}{2}{a+b}{c+d+e}}$
+\columnbreak
+	\begin{verbatim}
+		 ${\genfrac(]{0pt}{2}
+		 {a+b}
+		 {c+d+e}}$
+	\end{verbatim}
+\end{multicols}
+
+% ----------------------------
+\begin{multicols}{2}
+	$a = 
+	\begin{cases}
+		1, & n \text{ is odd}, \\
+		0, & \text{otherwise}.
+	\end{cases}$
+\columnbreak
+	\begin{verbatim}
+	$a = 
+	\begin{cases}
+		  1, & n \text{ is odd}, \\
+		  0, & \text{otherwise}.
+	\end{cases}$
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\[\sum_{\substack{k \in \hSoZ\\ 7 < k \\ k \leq 4}} a(k).\]
+\columnbreak
+	\begin{verbatim}
+	  $\sum_{
+	      \substack{
+	        k \in \hSoZ\\ 
+	        7 < k \\ 
+	        k \leq 4
+	      }
+	    } 
+	    a(k).$
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\[n! = \underbrace{1 \cdot 2 \cdot \dotso \cdot n}_{n}.\]
+\columnbreak
+	\begin{verbatim}
+		n! = \underbrace{
+		         1 
+		         \cdot 2 
+		         \cdot 
+		         \dotso 
+		         \cdot n
+		      }_{n}.
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+		\begin{align*}
+			aaa &= b+b+b &// ccc\\
+			d &= e+e &// fff
+		\end{align*}
+\columnbreak
+	\begin{verbatim}
+		\begin{align*}
+			aaa &= b+b+b &// ccc\\
+			d &= e+e &// fff
+		\end{align*}
+	\end{verbatim}
+\end{multicols}
+
+
+
+% =================
+\section{Equations}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{align*}
+		1 + (2 + 3)
+		& = 1 + 5\\
+		& = 6\\
+		& = 12/2.
+	\end{align*}
+\columnbreak
+	\begin{verbatim}
+	\begin{align*}
+		1 + (2 + 3)
+		& = 1 + 5\\
+		& = 6\\
+		& = 12/2.
+	\end{align*}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\[
+		\left.
+			\frac{x^{2}}{3}
+		\right|_{0}^{1}
+	\]
+\columnbreak
+	\begin{verbatim}
+		\left.
+			 \frac{x^{2}}{3}
+		\right|_{0}^{1}
+	\end{verbatim}
+\end{multicols}
+%% ----------------------------
+%\begin{multicols}{2}
+%	aaa
+%\columnbreak
+%	\begin{verbatim}
+%		aaa
+%	\end{verbatim}
+%\end{multicols}
+
+
+
+
+
+
+
+% =======================================
+\section{Dots}
+\begin{tabular}{@{}ll@{}}
+	$1 \cdot 2 \cdot 3$ (multiplication) & \verb!$1 \cdot 2 \cdot 3$!\\
+	$1, 2, \dotsc, 9$ (comma) & \verb!$1, 2, \dotsc, 9$!\\
+	$1 + 2 + \dotso + 9$ (operator) & \verb!$1 + 2 + \dotso + 9$!\\
+\end{tabular}
+% ---
+\begin{multicols}{2}
+	\[
+%	 A =
+	 \begin{pmatrix}
+	  a_{1,1} & \cdots & a_{1,n}\\
+	  \vdots  & \ddots & \vdots \\
+	  a_{m,1} & \cdots & a_{m,n}
+	 \end{pmatrix}
+	\]
+\columnbreak
+	\begin{verbatim}
+		$\begin{pmatrix}
+		  a_{1,1} &\cdots &a_{1,n} \\
+		  \vdots  &\ddots &\vdots  \\
+		  a_{m,1} &\cdots &a_{m,n}
+		 \end{pmatrix}$
+	\end{verbatim}
+\end{multicols}
+% ---
+\begin{multicols}{2}
+\[
+M = \bordermatrix{~ & x & y \cr
+                  A & 1 & 2 \cr
+                  B & 3 & 4 \cr}
+\]
+\columnbreak
+	\begin{verbatim}
+	$M = \bordermatrix{~ & x & y \cr
+                  A & 1 & 2 \cr
+                  B & 3 & 4 \cr}
+	$
+	\end{verbatim}
+\end{multicols}
+
+%% ---
+%\begin{multicols}{2}
+%	aaa
+%\columnbreak
+%	\begin{verbatim}
+%	aaa
+%	\end{verbatim}
+%\end{multicols}
+
+
+
+% =================
+\section{Logic}
+\begin{tabular}{@{}ll@{}}
+	$\overline{p}$	&\verb!\overline{p}!\\
+	$\neg p$	&\verb!\neg p!\\
+	$p \land q$	&\verb!p \land q!\\
+	$p \lor q$	&\verb!p \lor q!\\
+	$p \oplus q$	&\verb!p \oplus q!\\
+	$p \rightarrow q$	&\verb!p \rightarrow q!\\
+	$p \leftrightarrow q$	&\verb!p \leftrightarrow q!\\
+	$p \equiv q$	&\verb!p \equiv q!\\
+%--
+%	$p \hAnd q$	&\verb!p \hAnd q!\\
+%	$p \hOr q$	&\verb!p \hOr q!\\
+	$p \longrightarrow q$	&\verb!p \longrightarrow q!\\
+	$p \longleftrightarrow q$	&\verb!p \longleftrightarrow q!\\
+	$p \Longrightarrow  q$	&\verb!p \Longrightarrow  q!\\
+	$p \Longleftrightarrow  q$	&\verb!p \Longleftrightarrow  q!\\
+\end{tabular}
+\begin{tabular}{@{}ll@{}}
+	$\forall x \in A \ P(x)$	&\verb!\forall x \in A \ P(x)!\\
+	$\not \forall x \in A \ P(x)$	&\verb!\not \forall x \in A \ P(x)!\\
+	$\exists x \in A \ P(x)$	&\verb!\exists x \in A \ P(x)!\\
+	$\not \exists x \in A \ P(x)$	&\verb!\not \exists x \in A \ P(x)!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+% =================
+\section{Set Theory}
+\begin{tabular}{@{}ll@{}}
+%	$\hPairing{b}{aa}$	&\verb!\hPairing{b}{aa}!\\
+%	$\ensuremath{\left 1 \, 2 \,  2}$	&aaa\\
+	$\emptyset$	&\verb!\emptyset!\\
+	$x \in A$	&\verb!x \in A!\\
+	$x \notin A$	&\verb!x \notin A!\\
+	$\{ x, y \}$	& \verb!\{ x, y \}!\\
+	$\{ x \mid P(x) \}$	&\verb!\{ x \mid P(x) \}!\\
+	$A \subset B$	&\verb!A \subset B!\\
+	$A \not\subset B$	&\verb!A \not\subset B!\\
+	$A \subseteq B$	&\verb!A \subseteq B!\\
+	$A \not\subseteq B$	&\verb!A \not\subseteq B!\\
+	$2^{A}$	&\verb!2^{A}!\\
+	$\lvert A \rvert$ (\refsec{sec:pairs})	&\verb!\lvert A \rvert!\\
+	$A \cup B$	&\verb!A \cup B!\\
+	$A \cap B$	&\verb!A \cap B!\\
+	$A \smallsetminus B$	&\verb!A \smallsetminus B!\\
+	$A \times B$	&\verb!A \times B!\\
+	$(a, b)$	&\verb!(a, b)!\\
+%	
+	$\overline{A}$	&\verb!\overline{A}!\\
+	$f^{-1}$	&\verb!f^{-1}!\\
+	$f \circ g$	&\verb!f \circ g!\\
+	$a \, \beta \, b$	&\verb!a \, \beta \, b!\\
+	$a \, \cancel{\beta} \, b$	&\verb!a \, \cancel{\beta} \, b!\\
+%	$\hFunction{f}{A}{B}$	&\verb!\hFunction{f}{A}{B}!\\
+	$f \colon A \to B$	&\verb!f \colon A \to B!\\
+	$a \mapsto f(a)$	&\verb!a \mapsto f(a)!\\
+	$f \upharpoonright C$	 (restriction of $f$ to C)	&\verb!f \upharpoonright C!\\
+	$i_{A}$	&\verb!i_{A}!\\
+%	$aaa$	&\verb!aaa!\\
+	$B^{A}$	&\verb!B^{A}!\\
+	$\mathcal{P}(A)$	&\verb!\mathcal{P}(A)!\\
+	$\mathbb{A}$	&\verb!\mathbb{A}!\\
+%	$aaa$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+% =================
+\section{Algebraic Structures}
+\begin{tabular}{@{}ll@{}}
+	$[A, \oplus]$	&\verb![A, \oplus]!\\
+	$[A, \oplus, \otimes]$	&\verb![A, \oplus, \otimes]!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+% =================
+\section{Number Theory}
+\begin{tabular}{@{}ll@{}}
+	$\hCeil{x}$ &\verb!\hCeil{x}!\\
+	$\hFloor{x}$ &\verb!\hPairingFloor{x}!\\
+	$\hAbs{x}$ &\verb!\hAbs{x}!\\
+	$x \mid y$ &\verb!x \mid y!\\
+	$x \nmid y$ &\verb!x \nmid y!\\
+	$x \bot y$ &\verb!x \bot y!\\
+	$x \mathrm{div} y$ &\verb!x  \mathrm{div} y!\\
+	$\log_{2} x$ &\verb!\log_{2} x!\\
+%	$H_{2} x$ &\verb!H_{2} x!\\
+%	$\hBinaryEntropy$ &\verb!\hBinaryEntropy!\\
+	$\sum_{k=1}^{n}$ &\verb!\sum_{k=1}^{n}!\\
+	$\prod_{k=1}^{n}$ &\verb!\prod_{k=1}^{n}!\\
+	$\frac{x}{y}$ &\verb!\frac{x}{y}!\\
+	$\sqrt[n]{x}$ &\verb!\sqrt[n]{x}!\\
+	$a \bmod b$ &\verb!a \bmod b!\\
+	$0 \equiv 3 \pmod{3}$ &\verb!0 \equiv 3 \pmod{3}!\\
+	$0 \equiv 3 \mod{3}$  &\verb!0 \equiv 3 \mod{3}!\\
+	$0 \equiv 3 \pod{3}$ &\verb!0 \equiv 3 \pod{3}!\\
+	$a \perp a$	&\verb!a \perp a!\\
+	$a \bot b$ &\verb!a \bot b!\\
+%	$aaa$ &\verb!aaa!\\
+\end{tabular}
+
+
+
+% =================
+\section{Combinatorics}
+\begin{tabular}{@{}ll@{}}
+	$n! = n$ factorial	&\verb!n!!\\
+	$n^{\overline{r}}$ = $n$ to the $r$ rising	&\verb!n^{\overline{r}}!\\
+	$n^{\underline{r}}$ = $n$ to the $r$ falling	&\verb!n^{\underline{r}}!\\
+	${n \choose r}$ = $n$ choose $r$	&\verb!{n \choose r}!\\
+	${n \brack r}$ = Stirling cycle number	&\verb!{n \brack r}!\\
+	${n \brace r}$ = Stirling subset number &\verb!{n \brace r}!\\
+	$S(n, k)$ = Stirling number	&\verb!S(n, k)!\\
+	%=The number of partitions of an $n$-set into exactly $k$ nonempty subsets. \\
+	$B_{n}$ = The $n$th Bell number	&\verb!B_{n}!\\
+	%=The number of partitions of an $n$-set. \\
+\end{tabular}
+
+
+%% =================
+%\section{psmatrix}
+%$ \begin{psmatrix}[mnode=circle,colsep=1cm,rowsep=.5cm]
+%	A \\
+%	& B\times_Z C & [mnode=oval] DDD \\
+%	& E & F
+%	\psset{arrows=->,nodesep=3pt}
+%	\everypsbox{\scriptstyle}
+%	\ncline{1,1}{2,2}_{y}
+%	\ncline[doubleline=true,linestyle=dashed]{-}{1,1}{2,3}^{x}
+%	\ncline[linestyle=dashed]{-}{2,2}{3,2}<{q}
+%	\ncline{2,2}{2,3}_{p}
+%	\ncarc[arcangle=40,border=3pt]{3,2}{1,1}
+%	_[npos=.3]{d}^[npos=.9]{e}
+%	\ncline[linestyle=dotted]{2,3}{3,3}>{f}
+%	\ncline{3,2}{3,3}^{g}
+%\end{psmatrix} $
+%\begin{verbatim}
+%\begin{psmatrix}[mnode=circle,colsep=1cm,rowsep=.5cm]
+%	A \\
+%	& B\times_Z C & [mnode=oval] DDD \\
+%	& E & F
+%	\psset{arrows=->,nodesep=3pt}
+%	\everypsbox{\scriptstyle}
+%	\ncline{1,1}{2,2}_{y}
+%	\ncline[doubleline=true,linestyle=dashed]{-}{1,1}{2,3}^{x}
+%	\ncline[linestyle=dashed]{-}{2,2}{3,2}<{q}
+%	\ncline{2,2}{2,3}_{p}
+%	\ncarc[arcangle=40,border=3pt]{3,2}{1,1}
+%	_[npos=.3]{d}^[npos=.9]{e}
+%	\ncline[linestyle=dotted]{2,3}{3,3}>{f}
+%	\ncline{3,2}{3,3}^{g}
+%\end{psmatrix} 
+%\end{verbatim}
+
+
+
+% =================
+\section{xymatrix}
+$
+	\xymatrix{
+	  11
+		\POS[];
+		[d]**\dir{-};
+		[];[dr]**\dir{-};
+	\ar@/^/[r]^{\alpha_{1}} 
+	& 12
+	\ar@/^/[r]^{\alpha_{7}} 
+	\ar@/^/[l]^{\alpha_{3}} 
+	& 13
+	  \ar@/^/[l]^{\alpha_{9}} 
+	\\
+	  21
+	  \ar@/^/[ur]^{\alpha_{5}}
+	  \ar@/^/[u]^{\alpha_{4}}
+	  \ar@/^/[urr]^{\alpha_{7}}
+	& \bullet
+	& 23
+	  \ar@/^/[ll]^{\alpha_{8}}
+	  \ar[u]^{9}
+	  \ar[ul]^{9}
+	}
+$
+\begin{verbatim}
+$
+	\xymatrix{
+	  11
+		\POS[];
+		[d]**\dir{-};
+		[];[dr]**\dir{-};
+	\ar@/^/[r]^{\alpha_{1}} 
+	& 12
+	\ar@/^/[r]^{\alpha_{7}} 
+	\ar@/^/[l]^{\alpha_{3}} 
+	& 13
+	  \ar@/^/[l]^{\alpha_{9}} 
+	\\
+	  21
+	  \ar@/^/[ur]^{\alpha_{5}}
+	  \ar@/^/[u]^{\alpha_{4}}
+	  \ar@/^/[urr]^{\alpha_{7}}
+	& \bullet
+	& 23
+	  \ar@/^/[ll]^{\alpha_{8}}
+	  \ar[u]^{9}
+	  \ar[ul]^{9}
+	}
+$
+\end{verbatim}
+% ---
+%\begin{multicols}{2}
+%	\begin{hSolution}
+%		aa
+%	\end{hSolution}
+%
+%\columnbreak
+%	\begin{verbatim}
+%	\begin{hSolution}
+%	 aa
+%	\end{hSolution}
+%	\end{verbatim}
+%\end{multicols}
+%% ---
+%\begin{multicols}{2}
+%	\begin{hNotation}
+%		aa
+%	\end{hNotation}
+%
+%\columnbreak
+%	\begin{verbatim}
+%	\begin{hNotation}
+%		aa
+%	\end{hNotation}
+%	\end{verbatim}
+%\end{multicols}
+
+
+
+% =================
+\section{Math Templates}
+\label{sec:templates}
+\begin{verbatim}
+	\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+	\newcommand{\reftbl}[1]{Table~\ref{#1}}
+	\newcommand{\refsec}[1]{Sec.~\ref{#1}}
+	\newcommand{\refthm}[1]{Theorem~\ref{#1}}
+	\newcommand{\reflem}[1]{Lemma~\ref{#1}}
+	\newcommand{\refdef}[1]{Definition~\ref{#1}}
+	\newcommand{\refeq}[1]{Eq.~\ref{#1}}
+\end{verbatim}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{ax}
+		aa 
+	\end{ax}
+\columnbreak
+	\begin{verbatim}
+	\begin{ax}
+		aa 
+	\end{ax}
+	\end{verbatim}
+\end{multicols}
+
+% ----------------------------
+\begin{multicols}{2}
+	\begin{defn}
+		aa \hDefined{dd} aa.
+		\label{def:aa}
+	\end{defn}
+\columnbreak
+	\begin{verbatim}
+		\begin{defn}
+			Aaaa
+			\label{def:aa}
+		\end{defn}
+	\end{verbatim}
+\end{multicols}
+
+% ----------------------------
+\begin{multicols}{2}
+	\begin{thm}[Gauss]
+		aa	
+		\label{thm:gauss}
+	\end{thm}
+\columnbreak
+	\begin{verbatim}
+	\begin{thm}[Gauss]
+		aa	
+		\label{thm:gauss}
+	\end{thm}
+	\end{verbatim}
+\end{multicols}
+\begin{multicols}{2}
+%	\begin{proof}[\refthm{thm:gauss}]
+	\begin{proof}
+		aaa
+	\end{proof}
+\columnbreak
+	\begin{verbatim}
+	\begin{proof}
+	 aaa
+	\end{proof}
+	\end{verbatim}
+\end{multicols}
+
+% ----------------------------
+\begin{multicols}{2}
+	\begin{lem}[Fermat]
+		aa.
+		\label{lem:fermat}
+		\begin{proof}
+			aaa.
+		\end{proof}
+	\end{lem}
+\columnbreak
+	\begin{verbatim}
+		\begin{lem}[Fermat]
+			aa.
+			\label{lem:fermat}
+			\begin{proof}
+				aaa.
+			\end{proof}
+		\end{lem}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{cor}
+		aa
+	\end{cor}
+\columnbreak
+	\begin{verbatim}
+	\begin{cor}
+	 aa
+	\end{cor}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{prop}
+		aa
+	\end{prop}
+\columnbreak
+	\begin{verbatim}
+	\begin{prop}
+	 aa
+	\end{prop}
+	\end{verbatim}
+\end{multicols}
+%% ----------------------------
+%\begin{multicols}{2}
+%	\begin{lem}
+%		aa
+%	\end{lem}
+%\columnbreak
+%	\begin{verbatim}
+%	\begin{lem}
+%	 aa
+%	\end{lem}
+%	\end{verbatim}
+%\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{rem}
+		aa
+	\end{rem}
+\columnbreak
+	\begin{verbatim}
+	\begin{rem}
+	 aa
+	\end{rem}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{notation}
+		aa
+	\end{notation}
+\columnbreak
+	\begin{verbatim}
+	\begin{notation}
+	 aa
+	\end{notation}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{exmp}
+		aa
+	\end{exmp}
+\columnbreak
+	\begin{verbatim}
+		\begin{exmp}
+		 aa
+		\end{exmp}
+	\end{verbatim}
+\end{multicols}
+
+
+
+% =================
+\section{Labels References}
+% ----------------------------
+\begin{multicols}{2}
+	aaaa
+	This is how to reference to them.
+	\refdef{def:aa}, 
+	\refthm{thm:gauss}	,
+	\reflem{lem:fermat}, and
+	\refsec{sec:templates}.
+\columnbreak
+	\begin{verbatim}
+		This is how reference to them.
+		\refdef{def:aa}, 
+		\refthm{thm:gauss},
+		\reflem{lem:aa}, and
+		\refsec{sec:templates}.
+	\end{verbatim}
+\end{multicols}
+% =================
+\section{Environments}
+\begin{tabular}{@{}ll@{}}
+	Axiom	&\verb!ax!\\
+	Corollary	&\verb!cor!\\
+	Definition	&\verb!defn!\\
+	Example	&\verb!exmp!\\
+	Exercise	&\verb!exercise!\\
+	Equation	&\verb!align*!\\
+	Lemma	&\verb!lem!\\
+	Notation	&\verb!notation!\\
+	Proof	&\verb!proof!\\
+	Proposition	&\verb!prop!\\
+	Remark	&\verb!rem!\\
+	Theorem	&\verb!thm!\\
+%	Question	&\verb!hQuestion!\\
+%	Reminder	&\verb!hReminder!\\
+%	Property	&\verb!hProperty!\\
+%	Notation	&\verb!hNotation!\\
+%	Application	&\verb!hApplication!\\
+%	Summary	&\verb!hSummary!\\
+\end{tabular}
+
+
+
+% =================
+\section{Lists}
+\verb!\usepackage{enumerate}!
+% ----------------------------
+\begin{multicols}{2}
+	\begin{itemize}
+		\item aa
+		\item bb
+	\end{itemize}
+\columnbreak
+	\begin{verbatim}
+	\begin{itemize}
+		\item aa
+		\item bb
+	\end{itemize}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item aa
+		\item bb
+	\end{enumerate}
+\columnbreak
+	\begin{verbatim}
+	\begin{enumerate}
+		\item aa
+		\item bb
+	\end{enumerate}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{enumerate}[i)]
+		\item aa
+		\item bb
+	\end{enumerate}
+\columnbreak
+	\begin{verbatim}
+	\begin{enumerate}[i)]
+		\item aa
+		\item bb
+	\end{enumerate}
+	\end{verbatim}
+\end{multicols}
+% ----------------------------
+\begin{multicols}{2}
+	\begin{enumerate}[a)]
+		\item aa
+		\item bb
+	\end{enumerate}
+\columnbreak
+	\begin{verbatim}
+	\begin{enumerate}[a)]
+		\item aa
+		\item bb
+	\end{enumerate}
+	\end{verbatim}
+\end{multicols}
+
+
+
+
+% ======================================================================
+\section{hTags}
+\label{sec:hTags}
+
+\begin{tabular}{@{}ll@{}}
+%	$ new line$	&\verb!\hNewLine!\\
+	$\hDefined{x}$	&\verb!\hDefined{x}!\\
+%	$\hDefinedC{x}$	&\verb!\hDefinedC{x}!\\
+%	$\hDefinedN{x}$	&\verb!\hDefinedN{x}!\\
+	$x \hDefinitionIFF  y$	&\verb!\hDefinitionIFF!\\
+	$x \hDefinitionEqual y$	&\verb!\hDefinitionEqual!\\
+	$x \hDefinitionEquiv y$	&\verb!\hDefinitionEquiv!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+% =======================================
+\section{hPairs}
+\label{sec:pairs}
+
+\begin{tabular}{@{}ll@{}}
+%	$\hAbs{x}$	&\verb!\hAbs{x}!\\
+	$\hAbs{x}$	&\verb!\hAbs{x}!\\
+%	$\hPairingBraket{x}$	&\verb!\hPairingBraket{x}!\\
+%	$\hPairingParan{x}$	&\verb!\hPairingParan{x}!\\
+%	$\hPairingCurly{x}$	&\verb!\hPairingCurly{x}!\\
+	$\hCeil{x}$	&\verb!\hCeil{x}!\\
+	$\hFloor{x}$	&\verb!\hFloor{x}!\\
+	$\| x \|$	&\verb!\| x \|!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+
+
+
+
+% =======================================
+\section{hSets}
+\begin{tabular}{@{}ll@{}}
+	\hSoN = The natural numbers	&\verb!\hSoN!\\
+	\hSoNp = Counting numbers	&\verb!\hSoNp!\\
+	\hSoZ = The integers	&\verb!\hSoZ!\\
+	\hSoZp = positive integers	&\verb!\hSoZp!\\
+	\hSoZn = negative integers	&\verb!\hSoZn! \\
+	\hSoZnn = nonnegative integers	&\verb!\hSoZnn!\\
+	\hSoZnz = nonzero integers	&\verb!\hSoZnz!\\
+	\hSoZnp = nonpositive integers	&\verb!\hSoZnp!\\
+	\hSoQ = The rational numbers	&\verb!\hSoQ!\\
+	\hSoQp = positive rational numbers	&\verb!\hSoQp!\\
+	\hSoQn = negative rational numbers	&\verb!\hSoQn!\\
+	\hSoQnn = nonnegative rationals	&\verb!\hSoQnn!\\
+	\hSoQnz = nonzero rationals	&\verb!\hSoQnz!\\
+	\hSoQnp = nonpositive rationals	&\verb!\hSoQnp!\\
+	\hSoR = The real numbers	&\verb!\hSoR!\\
+	\hSoRp = positive real numbers	&\verb!\hSoRp!\\
+	\hSoRn = negative real numbers	&\verb!\hSoRn!\\
+	\hSoRnn = nonnegative reals	&\verb!\hSoRnn!\\
+	\hSoRnz = nonzero reals	&\verb!\hSoRnz!\\
+	\hSoRnp = nonpositive reals	&\verb!\hSoRnp!\\
+	\hSoC = The complex numbers	&\verb!\hSoC!\\
+	\hSoCnz = nonzero complex numbers	&\verb!\hSoCnz!\\
+	\hSoPrimes = The set of Prime Numbers	&\verb!\hSoPrimes!\\
+	\hSoTruth	&\verb!\hSoTruth! \\
+	$\hSoBits = \{ 0, 1 \}$	&\verb!\hSoBits!\\
+	$\hSoSubsets{A}$	&\verb!\hSoSubsets{A}!\\
+	$\hSoPowerSet{A}$ = $\hSoSubsets{A}$= The set of all subsets	&\verb!\hSoPowerSet{A}! \\
+	$\hSoFunctions{A}{B}$=The set of all functions	&\verb!\hSoFunctions{A}{B}!\\
+%	$aaa$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+%	$aaa$	&\verb!aaa!\\
+\end{tabular}
+\end{multicols}
+
+\end{document}
